@@ -8,7 +8,7 @@
 //======= время выполнения 20 минут == (No use copy/paste) ==============
 /*
 1. Создать метод FillArray()
-2. создать методб которы определит четные чиcла в массиве и посчитает их
+2. создать метод который определит четные чиcла в массиве и посчитает их
 и выведет в консоль.
 */
 // int[] FillArray(int size)
@@ -16,7 +16,7 @@
 //     int[] arr = new int[size];
 //     for (int i = 0; i < size; i++)
 //     {
-//         arr[i] = new Random().NextDouble(100, 1000);
+//         arr[i] = new Random().Next(100, 1000);
 //     }
 //     return arr;
 //  }
@@ -173,61 +173,61 @@
 [3 7 22 2 78] -> 76
 */
 //======= время выполнения 40 минут == (used copy/paste method showarray) ==============
-double[] FillArray(int size)
-{
-    double[] arr = new double[size];
-    int length = arr.Length;
-    for (int i = 0; i < length; i++)
-    {
-        arr[i] = new Random().NextDouble() +  new Random().Next(-100, 100);
-    }
-    return arr;
-}
+// double[] FillArray(int size)
+// {
+//     double[] arr = new double[size];
+//     int length = arr.Length;
+//     for (int i = 0; i < length; i++)
+//     {
+//         arr[i] = new Random().NextDouble() +  new Random().Next(-100, 100);
+//     }
+//     return arr;
+// }
 
-double FindMinValue(double[] arr)
-{
-    double minValue = arr[0];
-    for (int i = 1; i < arr.Length; i++)
-    {
-        if(arr[i]<minValue) minValue = arr[i];
-    }
-    return minValue;
-}
+// double FindMinValue(double[] arr)
+// {
+//     double minValue = arr[0];
+//     for (int i = 1; i < arr.Length; i++)
+//     {
+//         if(arr[i]<minValue) minValue = arr[i];
+//     }
+//     return minValue;
+// }
 
-double FindMaxValue(double[] arr)
-{
-    double maxValue = arr[0];
-    for (int i = 1; i < arr.Length; i++)
-    {
-        if(arr[i]>maxValue) maxValue = arr[i];
-    }
-    return maxValue;
-}
+// double FindMaxValue(double[] arr)
+// {
+//     double maxValue = arr[0];
+//     for (int i = 1; i < arr.Length; i++)
+//     {
+//         if(arr[i]>maxValue) maxValue = arr[i];
+//     }
+//     return maxValue;
+// }
 
-void ShowArray(double[] arr)
-{
-    int size = arr.Length;
-    Console.Write("{");
-    for(int i = 0; i < size; i++)
-    {
-        if (i == size-1) Console.Write($"{arr[i]} ");
-        else Console.Write($"{arr[i]}, ");
-    }
-    Console.Write("}");
-}
+// void ShowArray(double[] arr)
+// {
+//     int size = arr.Length;
+//     Console.Write("{");
+//     for(int i = 0; i < size; i++)
+//     {
+//         if (i == size-1) Console.Write($"{arr[i]} ");
+//         else Console.Write($"{arr[i]}, ");
+//     }
+//     Console.Write("}");
+// }
 
-void ShowDifferenceNumber(double minValue, double maxValue)
-{
-    double difference = maxValue - minValue;
-    Console.WriteLine($" -> {difference:0.00}");
-}
+// void ShowDifferenceNumber(double minValue, double maxValue)
+// {
+//     double difference = maxValue - minValue;
+//     Console.WriteLine($" -> {difference:0.00}");
+// }
 
-int sizeArray = 10;
-double[] array = FillArray(sizeArray);
-double min = FindMinValue(array);
-double max = FindMaxValue(array);
-ShowArray(array);
-ShowDifferenceNumber(min, max);
+// int sizeArray = 10;
+// double[] array = FillArray(sizeArray);
+// double min = FindMinValue(array);
+// double max = FindMaxValue(array);
+// ShowArray(array);
+// ShowDifferenceNumber(min, max);
 
 
 //================ Task 5 ==========================
@@ -237,3 +237,52 @@ ShowDifferenceNumber(min, max);
 [1 2 3 4 5] -> 5 8 3
 [6 7 3 6] -> 36 21
 */
+
+int[] FillArray(int size)
+{
+    int[] arr = new int[size];
+    for (int i = 0; i < size; i++)
+    {
+        arr[i] = new Random().Next(1, 10);
+    }
+    return arr;
+ }
+
+void ShowArray(int[] arr)
+{
+    int size = arr.Length;
+    Console.Write("{");
+    for(int i = 0; i < size; i++)
+    {
+        if (i == size-1) Console.Write($"{arr[i]}");
+        else Console.Write($"{arr[i]}, ");
+    }
+    Console.Write("}");
+}
+
+int[] ProductPairNumbersArray(int[] arr)
+{
+    int sizeLength = arr.Length;
+    int newSize = 0;
+    if(sizeLength%2 == 0)  newSize = sizeLength/2;
+    else newSize = sizeLength/2 + 1;
+    Console.WriteLine($"New Size {newSize}");
+     int[] array = new int[newSize];
+    
+    for (int i = 0; i < newSize; i++)
+    {
+        if(i != (sizeLength-1)-i) array[i] = arr[i]*arr[(sizeLength-1)-i];
+        else array[i] = arr[i];
+    }
+     return array;
+
+}
+
+
+
+ int size = 10;
+ int[] array = FillArray(size);
+ int[] newArray = ProductPairNumbersArray(array);
+ ShowArray(array);
+ Console.Write(" -> ");
+ ShowArray(newArray);
