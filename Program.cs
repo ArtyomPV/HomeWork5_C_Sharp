@@ -52,38 +52,96 @@
 внутри этих отрезков
 */
 //======= время выполнения 54 минуты == (No use copy/paste) ==============
+// int[] FillArray(int size)
+// {
+//     int[] array = new int[size]; 
+//     for(int i = 0; i < size; i++)
+//     {
+//         array[i] = new Random().Next(0, 200);
+//     }
+//     return array; 
+// }
+
+// int CountElementsBetweenSomeValue(int[] arr, int num1, int num2) 
+// {
+//     int length = arr.Length;
+//     int count = 0;
+//     bool flagStartCount = false;
+    
+//     for(int i = 0; i < length; i++)
+//     {
+//         if(arr[i] >= num1 && arr[i] <= num2)              //ищем начало отрезка num1
+//         {
+//            flagStartCount = true;       //разрешаем подсчет элементов
+//         }
+        
+//         if(arr[i] > num2 || arr[i] < num1)              //ищем конец отрезка num2
+//         {
+//             flagStartCount = false;     //запрещаем отсчет элементов
+//         }
+        
+//         if(flagStartCount) count ++;    //если разрешен подсчет элемнтов, то считаем количество
+//     }
+//     return count;
+//     Console.Write($"Quantity of array`s elements is {count}");
+// }
+
+// void ShowArray(int[] arr)
+// {
+//     int size = arr.Length;
+//     for(int i = 0; i < size; i++)
+//     {
+//         if (i == size-1) Console.WriteLine($"{arr[i]} ");
+//         else Console.Write($"{arr[i]}, ");
+//     }
+// }
+
+// void ShowCountElements(int number)
+// {
+//     Console.Write($"Quantity of array`s elements is {number}");
+// }
+// int size = 123;
+// int startNumber = 10;
+// int endNumber = 99;
+
+// int[] array = FillArray(size);
+// //int[] array = {};
+// int count = CountElementsBetweenSomeValue(array, startNumber, endNumber);
+// ShowArray(array);
+// ShowCountElements(count);
+
+
+//================ Task 3 =========================
+
+/*Задача 36: Задайте одномерный массив, заполненный случайными числами.
+ Найдите сумму элементов, стоящих на нечётных позициях.
+[3, 7, 23, 12] -> 19
+[-4, -6, 89, 6] -> 0
+*/
+/*
+1. Метод заполнить массив
+2. Метод сумма нечетных чисел
+     Определить нечетные позиции массива  и сложить их
+*/
+//======= время выполнения 19 минут == (used copy/paste method showarray) ==============
 int[] FillArray(int size)
 {
-    int[] array = new int[size]; 
-    for(int i = 0; i < size; i++)
+    int[] arr = new int[size];
+    for (int i = 0; i < size; i++)
     {
-        array[i] = new Random().Next(0, 200);
+        arr[i] = new Random().Next(-100, 100);    
     }
-    return array; 
+    return arr;
 }
 
-int CountElementsBetweenSomeValue(int[] arr, int num1, int num2) 
+int SumOddElementsArray(int[] arr)
 {
-    int length = arr.Length;
-    int count = 0;
-    bool flagStartCount = false;
-    
-    for(int i = 0; i < length; i++)
+    int sum = 0;
+    for (int i = 0; i < arr.Length; i++)
     {
-        if(arr[i] >= num1 && arr[i] <= num2)              //ищем начало отрезка num1
-        {
-           flagStartCount = true;       //разрешаем подсчет элементов
-        }
-        
-        if(arr[i] > num2 || arr[i] < num1)              //ищем конец отрезка num2
-        {
-            flagStartCount = false;     //запрещаем отсчет элементов
-        }
-        
-        if(flagStartCount) count ++;    //если разрешен подсчет элемнтов, то считаем количество
+        if(i%2 != 0) sum += arr[i];
     }
-    return count;
-    Console.Write($"Quantity of array`s elements is {count}");
+    return sum;
 }
 
 void ShowArray(int[] arr)
@@ -96,28 +154,16 @@ void ShowArray(int[] arr)
     }
 }
 
-void ShowCountElements(int number)
+void ShowSumOddElementsArray(int num)
 {
-    Console.Write($"Quantity of array`s elements is {number}");
+    Console.Write($"Sum of odd elements of array is {num}");
 }
-int size = 123;
-int startNumber = 10;
-int endNumber = 99;
 
-int[] array = FillArray(size);
-//int[] array = {};
-int count = CountElementsBetweenSomeValue(array, startNumber, endNumber);
+int sizeArray = 10;
+int[] array = FillArray(sizeArray);
+int sum =  SumOddElementsArray(array);
 ShowArray(array);
-ShowCountElements(count);
-
-
-//================ Task 3 =========================
-
-/*Задача 36: Задайте одномерный массив, заполненный случайными числами.
- Найдите сумму элементов, стоящих на нечётных позициях.
-[3, 7, 23, 12] -> 19
-[-4, -6, 89, 6] -> 0
-*/
+ShowSumOddElementsArray(sum);
 
 //================ Task 4 ==========================
 /*Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
