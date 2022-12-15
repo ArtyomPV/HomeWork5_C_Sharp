@@ -16,7 +16,7 @@
 //     int[] arr = new int[size];
 //     for (int i = 0; i < size; i++)
 //     {
-//         arr[i] = new Random().Next(100, 1000);
+//         arr[i] = new Random().NextDouble(100, 1000);
 //     }
 //     return arr;
 //  }
@@ -57,7 +57,7 @@
 //     int[] array = new int[size]; 
 //     for(int i = 0; i < size; i++)
 //     {
-//         array[i] = new Random().Next(0, 200);
+//         array[i] = new Random().NextDouble(0, 200);
 //     }
 //     return array; 
 // }
@@ -124,54 +124,116 @@
      Определить нечетные позиции массива  и сложить их
 */
 //======= время выполнения 19 минут == (used copy/paste method showarray) ==============
-int[] FillArray(int size)
+// int[] FillArray(int size)
+// {
+//     int[] arr = new int[size];
+//     for (int i = 0; i < size; i++)
+//     {
+//         arr[i] = new Random().Next(-100, 100);    
+//     }
+//     return arr;
+// }
+
+// int SumOddElementsArray(int[] arr)
+// {
+//     int sum = 0;
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         if(i%2 != 0) sum += arr[i];
+//     }
+//     return sum;
+// }
+
+// void ShowArray(int[] arr)
+// {
+//     int size = arr.Length;
+//     Console.Write("{");
+//     for(int i = 0; i < size; i++)
+//     {
+//         if (i == size-1) Console.Write($"{arr[i]} ");
+//         else Console.Write($"{arr[i]}, ");
+//     }
+//     Console.WriteLine("}");
+// }
+
+// void ShowSumOddElementsArray(int num)
+// {
+//     Console.Write($"Sum of odd elements of array is {num}");
+// }
+
+// int sizeArray = 10;
+// int[] array = FillArray(sizeArray);
+// int sum =  SumOddElementsArray(array);
+// ShowArray(array);
+// ShowSumOddElementsArray(sum);
+
+//================ Task 4 ==========================
+/*Задача 38: Задайте массив вещественных чисел. 
+Найдите разницу между максимальным и минимальным элементов массива.
+[3 7 22 2 78] -> 76
+*/
+//======= время выполнения 40 минут == (used copy/paste method showarray) ==============
+double[] FillArray(int size)
 {
-    int[] arr = new int[size];
-    for (int i = 0; i < size; i++)
+    double[] arr = new double[size];
+    int length = arr.Length;
+    for (int i = 0; i < length; i++)
     {
-        arr[i] = new Random().Next(-100, 100);    
+        arr[i] = new Random().NextDouble() +  new Random().Next(-100, 100);
     }
     return arr;
 }
 
-int SumOddElementsArray(int[] arr)
+double FindMinValue(double[] arr)
 {
-    int sum = 0;
-    for (int i = 0; i < arr.Length; i++)
+    double minValue = arr[0];
+    for (int i = 1; i < arr.Length; i++)
     {
-        if(i%2 != 0) sum += arr[i];
+        if(arr[i]<minValue) minValue = arr[i];
     }
-    return sum;
+    return minValue;
 }
 
-void ShowArray(int[] arr)
+double FindMaxValue(double[] arr)
+{
+    double maxValue = arr[0];
+    for (int i = 1; i < arr.Length; i++)
+    {
+        if(arr[i]>maxValue) maxValue = arr[i];
+    }
+    return maxValue;
+}
+
+void ShowArray(double[] arr)
 {
     int size = arr.Length;
+    Console.Write("{");
     for(int i = 0; i < size; i++)
     {
-        if (i == size-1) Console.WriteLine($"{arr[i]} ");
+        if (i == size-1) Console.Write($"{arr[i]} ");
         else Console.Write($"{arr[i]}, ");
     }
+    Console.Write("}");
 }
 
-void ShowSumOddElementsArray(int num)
+void ShowDifferenceNumber(double minValue, double maxValue)
 {
-    Console.Write($"Sum of odd elements of array is {num}");
+    double difference = maxValue - minValue;
+    Console.WriteLine($" -> {difference:0.00}");
 }
 
 int sizeArray = 10;
-int[] array = FillArray(sizeArray);
-int sum =  SumOddElementsArray(array);
+double[] array = FillArray(sizeArray);
+double min = FindMinValue(array);
+double max = FindMaxValue(array);
 ShowArray(array);
-ShowSumOddElementsArray(sum);
+ShowDifferenceNumber(min, max);
 
-//================ Task 4 ==========================
-/*Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
-[3 7 22 2 78] -> 76
-*/
 
 //================ Task 5 ==========================
-/*Задача 37: Найдите произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д. Результат запишите в новом массиве.
+/*Задача 37: Найдите произведение пар чисел в одномерном массиве. 
+Парой считаем первый и последний элемент, 
+второй и предпоследний и т.д. Результат запишите в новом массиве.
 [1 2 3 4 5] -> 5 8 3
 [6 7 3 6] -> 36 21
 */
