@@ -5,7 +5,37 @@
 
 [345, 897, 568, 234] -> 2
 */
+//======= время выполнения 20 минут == (No use copy/paste) ==============
+/*
+1. Создать метод FillArray()
+2. создать методб которы определит четные чиcла в массиве и посчитает их
+и выведет в консоль.
+*/
+int[] FillArray(int size)
+{
+    int[] arr = new int[size];
+    for (int i = 0; i < size; i++)
+    {
+        arr[i] = new Random().Next(100, 1000);
+        Console.Write($"{arr[i]} ");
+    }
+    return arr;
+ }
 
+ void CountQuantityPosElement(int[] arr)
+ {
+    int countQuantityPosElement = 0;
+    int sizeOfArray = arr.Length;
+    for (int i = 0; i < sizeOfArray; i++)
+    {
+        if(arr[i]%2 == 0) countQuantityPosElement++;
+    }
+    Console.WriteLine($"Quantity  of positive elements within array equal {countQuantityPosElement}.");
+ }
+Console.Write("Enter array's size: ");
+ int size = Convert.ToInt32(Console.ReadLine());
+ int[] array =  FillArray(size);
+ CountQuantityPosElement(array);
 //================ Task 2 ==========================
 /*Задача 35: Задайте одномерный массив из 123 случайных чисел. Найдите количество элементов массива, значения которых лежат в отрезке [10,99].
 Пример для массива из 5, а не 123 элементов. В своём решении сделайте для 123
